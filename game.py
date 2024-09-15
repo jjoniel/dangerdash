@@ -14,6 +14,7 @@ def fire_emergency():
     parser.parse("FIRE")
     return render_template('emergency.html',
                            title="Fire Emergency",
+                           color="#FC9F5B",
                            story=parser.story,
                            option1=parser.option1.get('op1'),
                            option1res=parser.option1.get('op1_res'),
@@ -38,6 +39,7 @@ def earthquake_emergency():
     parser.parse("EARTHQUAKE")
     return render_template('emergency.html',
                            title="Earthquake Emergency",
+                           color="#A9CBB7",
                            story=parser.story,
                            option1=parser.option1.get('op1'),
                            option1res=parser.option1.get('op1_res'),
@@ -62,6 +64,7 @@ def epidemic_emergency():
     parser.parse("EPIDEMIC")
     return render_template('emergency.html',
                            title="Epidemic Emergency",
+                           color="#C0E5C8",
                            story=parser.story,
                            option1=parser.option1.get('op1'),
                            option1res=parser.option1.get('op1_res'),
@@ -86,6 +89,7 @@ def stranger_danger():
     parser.parse("STRANGER")
     return render_template('emergency.html',
                            title="Stranger Danger",
+                           color="#FF785A",
                            story=parser.story,
                            option1=parser.option1.get('op1'),
                            option1res=parser.option1.get('op1_res'),
