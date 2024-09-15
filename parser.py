@@ -55,7 +55,6 @@ class Parser:
                 "op2bo" : strings[16],
             }
 
-            # Printing both dictionaries
             print("Option 1:")
             for key, value in self.option1.items():
                 print(f"{key}: {value}")

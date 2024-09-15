@@ -1,19 +1,16 @@
 from flask import Flask, render_template, redirect, url_for
-from parser import Parser  # Assuming Parser is the same as in your original code
+from parser import Parser 
 
 app = Flask(__name__)
 
-# Initialize parser
 parser = Parser()
 
 @app.route('/')
 def home():
-    # Main menu
     return render_template('index.html')
 
 @app.route('/fire')
 def fire_emergency():
-    # Parse the fire scenario
     parser.parse("FIRE")
     return render_template('emergency.html',
                            title="Fire Emergency",
@@ -38,7 +35,6 @@ def fire_emergency():
 
 @app.route('/earthquake')
 def earthquake_emergency():
-    # Parse the earthquake scenario
     parser.parse("EARTHQUAKE")
     return render_template('emergency.html',
                            title="Earthquake Emergency",
@@ -63,7 +59,6 @@ def earthquake_emergency():
 
 @app.route('/epidemic')
 def epidemic_emergency():
-    # Parse the earthquake scenario
     parser.parse("EPIDEMIC")
     return render_template('emergency.html',
                            title="Epidemic Emergency",
@@ -88,7 +83,6 @@ def epidemic_emergency():
 
 @app.route('/stranger')
 def stranger_danger():
-    # Parse the stranger danger scenario
     parser.parse("STRANGER")
     return render_template('emergency.html',
                            title="Stranger Danger",
