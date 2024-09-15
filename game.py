@@ -57,7 +57,7 @@ class EmergencyApp:
         self.button_frame.pack_forget()
 
     # Function to show the emergency information on the same screen
-    def show_emergency_info(self, title, message, image_file):
+    def show_emergency_info(self, title, message, option1, option2, image_file):
         self.hide_main_menu()  # Hide the main menu
 
         # Display emergency info
@@ -71,6 +71,12 @@ class EmergencyApp:
 
         self.info_message = tk.Label(self.root, text=message, font=("Arial", 14), bg="#000000", justify="left")
         self.info_message.pack(pady=10)
+
+        self.option1 = tk.Button(self.root, text=option1, command=self.next1, bg="#FFB6C1", font=("Arial", 12, "bold"))
+        self.option1.pack(pady=10)
+
+        self.option2 = tk.Button(self.root, text=option2, command=self.next2, bg="#FFB6C1", font=("Arial", 12, "bold"))
+        self.option2.pack(pady=10)
 
         # Back button to return to main menu
         self.back_button = tk.Button(self.root, text="Back to Menu", command=self.back_to_menu, bg="#FFB6C1", font=("Arial", 12, "bold"))
@@ -87,11 +93,44 @@ class EmergencyApp:
         # Show the main menu again
         self.create_main_menu()
 
+    def next1(self):
+        self.option1.config(text=f"{self.parser.option1.get('op1a')}", command=self.next1a)
+        self.option2.config(text=f"{self.parser.option1.get('op1b')}", command=self.next1b)
+
+    def next2(self):
+        self.option1.config(text=f"{self.parser.option1.get('op2a')}", command=self.next2a)
+        self.option2.config(text=f"{self.parser.option1.get('op2b')}", command=self.next2b)
+    
+    def next1a(self):
+        self.option1.pack_forget()
+        self.option2.pack_forget()
+        self.info_message.config(text=f"{self.parser.option1.get('op1a_res')}")
+    
+    def next1b(self):
+        self.option1.pack_forget()
+        self.option2.pack_forget()
+        self.info_message.config(text=f"{self.parser.option1.get('op1b_res')}")
+
+    def next2a(self):
+        self.option1.pack_forget()
+        self.option2.pack_forget()
+        self.info_message.config(text=f"{self.parser.option1.get('op2a_res')}")
+    
+    def next2b(self):
+        self.option1.pack_forget()
+        self.option2.pack_forget()
+        self.info_message.config(text=f"{self.parser.option1.get('op2b_res')}")
+    
+    
+
+
     # Functions for each emergency
     def fire_emergency(self):
         self.show_emergency_info(
             "Fire Emergency",
-            f"{self.parser.story}:\n\n1. {self.parser.option1.get("op1")}\n2. {self.parser.option2.get("op2")}",
+            f"{self.parser.story}",
+            f"{self.parser.option1.get('op1')}",
+            f"{self.parser.option2.get('op2')}",
             "fire.png"
         )
 
