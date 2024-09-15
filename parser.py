@@ -1,46 +1,53 @@
 import json
 
-# Load the variable from the JSON file
-try:
-    with open('saved_variables.json', 'r') as json_file:
-        saved_data = json.load(json_file)
+class Parser:
+    story = ''
+    option1 = {}
+    option2 = {}
 
-        strings = saved_data.get("message")
-        print(strings)
-        strings = strings.replace('[', '')
-        strings = strings.replace(']', '')
+    def parse(self):
+        try:
+            with open('saved_variables.json', 'r') as json_file:
+                saved_data = json.load(json_file)
 
-        strings = strings.split(';', 40)
+                strings = saved_data.get("message")
+                print(strings)
+                strings = strings.replace('[', '')
+                strings = strings.replace(']', '')
 
-        story = strings[0]
+                strings = strings.split(';', 40)
 
-        option1 = {
-            "op1": strings[1],
-            "op1a": strings[3],
-            "op1a_res": strings[7],
-            "op1b": strings[4],
-            "op1b_res": strings[8],
-        }
+                self.story = strings[0]
 
-        option2 = {
-            "op2": strings[2],
-            "op2a": strings[5],
-            "op2a_res": strings[9],
-            "op2b": strings[6],
-            "op2b_res": strings[10],
-        }
+                self.option1 = {
+                    "op1": strings[1],
+                    "op1a": strings[3],
+                    "op1a_res": strings[7],
+                    "op1b": strings[4],
+                    "op1b_res": strings[8],
+                }
 
-        # Printing both dictionaries
-        print("Option 1:")
-        for key, value in option1.items():
-            print(f"{key}: {value}")
+                self.option2 = {
+                    "op2": strings[2],
+                    "op2a": strings[5],
+                    "op2a_res": strings[9],
+                    "op2b": strings[6],
+                    "op2b_res": strings[10],
+                }
 
-        print("\nOption 2:")
-        for key, value in option2.items():
-            print(f"{key}: {value}")
+                # Printing both dictionaries
+                print("Option 1:")
+                for key, value in self.option1.items():
+                    print(f"{key}: {value}")
 
-        answers = strings[11:15]
-        print(answers)
+                print("\nOption 2:")
+                for key, value in self.option2.items():
+                    print(f"{key}: {value}")
 
-except FileNotFoundError:
-    print("No saved variables found.")
+                answers = strings[11:15]
+                print(answers)
+
+        except FileNotFoundError:
+            print("No saved variables found.")
+
+

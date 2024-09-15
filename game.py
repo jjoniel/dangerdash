@@ -1,6 +1,9 @@
 import tkinter as tk
 from PIL import ImageTk, Image
 
+from parser import Parser
+
+
 class EmergencyApp:
     def __init__(self, root):
         self.root = root
@@ -9,6 +12,9 @@ class EmergencyApp:
         self.root.configure(bg="#ADD8E6")  # Light blue background
 
         self.create_main_menu()
+
+        self.parser = Parser()
+        self.parser.parse()
 
     def create_main_menu(self):
         # Main menu title
@@ -55,7 +61,7 @@ class EmergencyApp:
         self.hide_main_menu()  # Hide the main menu
 
         # Display emergency info
-        self.info_title = tk.Label(self.root, text=title, font=("Arial", 20, "bold"), bg="#FFFACD")
+        self.info_title = tk.Label(self.root, text=title, font=("Arial", 20, "bold"), bg="#000000")
         self.info_title.pack(pady=10)
 
         img = ImageTk.PhotoImage(Image.open(image_file).resize((200, 200)))
@@ -63,7 +69,7 @@ class EmergencyApp:
         self.img_label.image = img  # Keep a reference to the image
         self.img_label.pack(pady=10)
 
-        self.info_message = tk.Label(self.root, text=message, font=("Arial", 14), bg="#FFFACD", justify="left")
+        self.info_message = tk.Label(self.root, text=message, font=("Arial", 14), bg="#000000", justify="left")
         self.info_message.pack(pady=10)
 
         # Back button to return to main menu
@@ -85,7 +91,7 @@ class EmergencyApp:
     def fire_emergency(self):
         self.show_emergency_info(
             "Fire Emergency",
-            "If there is a fire:\n\n1. Stay low to avoid smoke.\n2. Leave the building quickly.\n3. Do not use elevators.\n4. Call 911 once safe.",
+            f"{self.parser.story}:\n\n1. {self.parser.option1.get("op1")}\n2. {self.parser.option2.get("op2")}",
             "fire.png"
         )
 
