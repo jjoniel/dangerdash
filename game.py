@@ -30,6 +30,10 @@ def fire_emergency():
                            option12res=parser.option1.get('op1b_res'),
                            option21res=parser.option2.get('op2a_res'),
                            option22res=parser.option2.get('op2b_res'),
+                           option11val=parser.option1.get('op1ao'),
+                           option12val=parser.option1.get('op1bo'),
+                           option21val=parser.option2.get('op2ao'),
+                           option22val=parser.option2.get('op2bo'),
                            img="fire.png")
 
 @app.route('/earthquake')
@@ -51,7 +55,36 @@ def earthquake_emergency():
                            option12res=parser.option1.get('op1b_res'),
                            option21res=parser.option2.get('op2a_res'),
                            option22res=parser.option2.get('op2b_res'),
+                           option11val=parser.option1.get('op1ao'),
+                           option12val=parser.option1.get('op1bo'),
+                           option21val=parser.option2.get('op2ao'),
+                           option22val=parser.option2.get('op2bo'),
                            img="earthquake.png")
+
+@app.route('/epidemic')
+def epidemic_emergency():
+    # Parse the earthquake scenario
+    parser.parse("EPIDEMIC")
+    return render_template('emergency.html',
+                           title="Epidemic Emergency",
+                           story=parser.story,
+                           option1=parser.option1.get('op1'),
+                           option1res=parser.option1.get('op1_res'),
+                           option2=parser.option2.get('op2'),
+                           option2res=parser.option2.get('op2_res'),
+                           option11=parser.option1.get('op1a'),
+                           option12=parser.option1.get('op1b'),
+                           option21=parser.option2.get('op2a'),
+                           option22=parser.option2.get('op2b'),
+                           option11res=parser.option1.get('op1a_res'),
+                           option12res=parser.option1.get('op1b_res'),
+                           option21res=parser.option2.get('op2a_res'),
+                           option22res=parser.option2.get('op2b_res'),
+                           option11val=parser.option1.get('op1ao'),
+                           option12val=parser.option1.get('op1bo'),
+                           option21val=parser.option2.get('op2ao'),
+                           option22val=parser.option2.get('op2bo'),
+                           img="epidemic.png")
 
 @app.route('/stranger')
 def stranger_danger():
@@ -72,6 +105,10 @@ def stranger_danger():
                            option12res=parser.option1.get('op1b_res'),
                            option21res=parser.option2.get('op2a_res'),
                            option22res=parser.option2.get('op2b_res'),
+                           option11val=parser.option1.get('op1ao'),
+                           option12val=parser.option1.get('op1bo'),
+                           option21val=parser.option2.get('op2ao'),
+                           option22val=parser.option2.get('op2bo'),
                            img="stranger.png")
 
 if __name__ == '__main__':

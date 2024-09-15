@@ -40,6 +40,8 @@ class Parser:
                 "op1a_res": strings[9],
                 "op1b": strings[6],
                 "op1b_res": strings[10],
+                "op1ao" : strings[13],
+                "op1bo" : strings[14],
             }
 
             self.option2 = {
@@ -49,6 +51,8 @@ class Parser:
                 "op2a_res": strings[11],
                 "op2b": strings[8],
                 "op2b_res": strings[12],
+                "op2ao" : strings[15],
+                "op2bo" : strings[16],
             }
 
             # Printing both dictionaries
