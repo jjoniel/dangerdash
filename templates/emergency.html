@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #FFFACD;
+            color: #000000;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .story {
+            font-size: 1.2rem;
+        }
+        .options {
+            margin-top: 20px;
+        }
+        .options button {
+            background-color: #FFB6C1;
+            font-weight: bold;
+            margin: 10px;
+            border: none;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ title }}</h1>
+        <img src="/static/images/{{ img }}" alt="{{ title }}" style="width: 200px; height: 200px;">
+        <div class="story">
+            <h6>{{ story }}</h6>
+        </div>
+
+        <div class="options">
+            <button id="option1" onclick="next1()">{{ option1 }}</button>
+            <button id="option2" onclick="next2()">{{ option2 }}</button>
+        </div>
+
+        <a href="../">Back to Menu</a>
+    </div>
+
+    <script>
+        function next1() {
+            var btn = document.getElementById("option1")
+            btn.onclick = next1a
+            btn.innerHTML = "{{ option11 }}"
+            var btn2 = document.getElementById("option2")
+            btn2.onclick = next1b
+            btn2.innerHTML = "{{ option12 }}"   
+            var newH6 = document.createElement("h6");
+            newH6.innerHTML = "{{ option1res }}";
+            document.getElementsByClassName("story")[0].appendChild(newH6)
+        }
+        function next2() {
+            var btn = document.getElementById("option1")
+            btn.onclick = next2a
+            btn.innerHTML = "{{ option21 }}"
+            var btn2 = document.getElementById("option2")
+            btn2.onclick = next2b
+            btn2.innerHTML = "{{ option22 }}"     
+            let newH6 = document.createElement("h6");
+            newH6.innerHTML = "{{ option2res }}";
+            document.getElementsByClassName("story")[0].appendChild(newH6)
+        }
+        function next1a() {
+            var btn = document.getElementById("option1")
+            btn.style.display = "none"
+            var btn2 = document.getElementById("option2")
+            btn2.style.display = "none"
+            let newH6 = document.createElement("h6");
+            newH6.innerHTML = "{{ option11res }}";
+            document.getElementsByClassName("story")[0].appendChild(newH6)
+        }
+        function next1b() {
+            var btn = document.getElementById("option1")
+            btn.style.display = "none"
+            var btn2 = document.getElementById("option2")
+            btn2.style.display = "none"  
+            let newH6 = document.createElement("h6");
+            newH6.innerHTML = "{{ option12res }}";
+            document.getElementsByClassName("story")[0].appendChild(newH6)     
+        }
+        function next2a() {
+            var btn = document.getElementById("option1")
+            btn.style.display = "none"
+            var btn2 = document.getElementById("option2")
+            btn2.style.display = "none"      
+            let newH6 = document.createElement("h6");
+            newH6.innerHTML = "{{ option21res }}";
+            document.getElementsByClassName("story")[0].appendChild(newH6)   
+        }
+        function next2b() {
+            var btn = document.getElementById("option1")
+            btn.style.display = "none"
+            var btn2 = document.getElementById("option2")
+            btn2.style.display = "none"   
+            let newH6 = document.createElement("h6");
+            newH6.innerHTML = "{{ option22res }}";
+            document.getElementsByClassName("story")[0].appendChild(newH6)
+        }
+    </script>
+</body>
+</html>
