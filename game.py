@@ -98,8 +98,8 @@ class EmergencyApp:
         self.option2.config(text=f"{self.parser.option1.get('op1b')}", command=self.next1b)
 
     def next2(self):
-        self.option1.config(text=f"{self.parser.option1.get('op2a')}", command=self.next2a)
-        self.option2.config(text=f"{self.parser.option1.get('op2b')}", command=self.next2b)
+        self.option1.config(text=f"{self.parser.option2.get('op2a')}", command=self.next2a)
+        self.option2.config(text=f"{self.parser.option2.get('op2b')}", command=self.next2b)
     
     def next1a(self):
         self.option1.pack_forget()
@@ -114,12 +114,12 @@ class EmergencyApp:
     def next2a(self):
         self.option1.pack_forget()
         self.option2.pack_forget()
-        self.info_message.config(text=f"{self.parser.option1.get('op2a_res')}")
+        self.info_message.config(text=f"{self.parser.option2.get('op2a_res')}")
     
     def next2b(self):
         self.option1.pack_forget()
         self.option2.pack_forget()
-        self.info_message.config(text=f"{self.parser.option1.get('op2b_res')}")
+        self.info_message.config(text=f"{self.parser.option2.get('op2b_res')}")
     
     
 
