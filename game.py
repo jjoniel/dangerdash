@@ -14,7 +14,6 @@ class EmergencyApp:
         self.create_main_menu()
 
         self.parser = Parser()
-        self.parser.parse()
 
     def create_main_menu(self):
         # Main menu title
@@ -126,6 +125,7 @@ class EmergencyApp:
 
     # Functions for each emergency
     def fire_emergency(self):
+        self.parser.parse("FIRE")
         self.show_emergency_info(
             "Fire Emergency",
             f"{self.parser.story}",
